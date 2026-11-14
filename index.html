@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -340,37 +341,7 @@ button,input{font-family:inherit;color:inherit}
 
 .product:hover::before{transform:scale(1.5)}
 
-.product-image-wrap{
-  position:relative;
-  width:100%;
-  height:190px;
-  overflow:hidden;
-  background:linear-gradient(135deg,rgba(166,185,155,.25),rgba(115,141,112,.12));
-}
-
-.product-image{
-  display:block;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  transition:transform .5s;
-}
-
-.product:hover .product-image{transform:scale(1.05)}
-
-.product-image-placeholder{
-  width:100%;
-  height:100%;
-  display:grid;
-  place-items:center;
-  color:var(--muted);
-}
-
-.product-image-placeholder svg{
-  width:43px;
-  height:43px;
-  opacity:.65;
-}
+/* کارت محصولات بدون تصویر */
 
 .product-details{
   position:relative;
@@ -379,7 +350,8 @@ button,input{font-family:inherit;color:inherit}
   justify-content:space-between;
   align-items:center;
   gap:12px;
-  padding:18px 20px 20px;
+  padding:22px 20px;
+  min-height:112px;
 }
 
 .product-info{min-width:0}
@@ -649,7 +621,14 @@ button,input{font-family:inherit;color:inherit}
     gap:12px;
   }
 
-  .product-image-wrap{height:210px}
+  .product-details{
+    padding:19px 16px;
+    min-height:100px;
+  }
+
+  .product h3{font-size:14px}
+  .product p{font-size:11px}
+  .product-price{font-size:12px}
 
   .category-bar{
     flex-wrap:nowrap;
@@ -833,8 +812,6 @@ const stellaSupabase = window.supabase.createClient(
   CONFIG.SUPABASE_URL,
   CONFIG.SUPABASE_PUBLISHABLE_KEY
 );
-
-const IMAGE_BUCKET = 'product-images';
 
 /* ابزارهای عمومی */
 
@@ -1237,63 +1214,13 @@ function getDiscountedPrice(product) {
   return price;
 }
 
-/* آدرس عکس */
-
-function getProductImageUrl(imagePath) {
-  if (!imagePath || typeof imagePath !== 'string') return null;
-
-  const { data, error } = stellaSupabase
-    .storage.from(IMAGE_BUCKET)
-    .getPublicUrl(imagePath);
-
-  if (error || !data || !data.publicUrl) {
-    console.error('Image URL error:', error);
-    return null;
-  }
-
-  return data.publicUrl;
-}
-
-function createImagePlaceholder() {
-  const placeholder = createElement('div', 'product-image-placeholder');
-
-  placeholder.innerHTML = `
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-      <rect x="3" y="3" width="18" height="18" rx="4"/>
-      <circle cx="8.5" cy="8.5" r="1.5"/>
-      <path d="m21 15-5-5L5 21"/>
-    </svg>`;
-
-  return placeholder;
-}
+/*
+  ساخت کارت محصول بدون تصویر:
+  فقط نام، توضیحات و قیمت محصول نمایش داده می‌شود.
+*/
 
 function createProductCard(product) {
   const card = createElement('article', 'product');
-  const imageWrap = createElement('div', 'product-image-wrap');
-  const imageUrl = getProductImageUrl(product.image_path);
-
-  if (imageUrl) {
-    const image = createElement('img', 'product-image');
-
-    image.src = imageUrl;
-    image.alt = product.name_fa || 'تصویر محصول';
-    image.loading = 'lazy';
-    image.decoding = 'async';
-
-    image.addEventListener('error', () => {
-      image.remove();
-      imageWrap.appendChild(createImagePlaceholder());
-      console.error('تصویر محصول بارگذاری نشد:', product.image_path);
-    }, { once: true });
-
-    imageWrap.appendChild(image);
-
-  } else {
-    imageWrap.appendChild(createImagePlaceholder());
-  }
-
-  card.appendChild(imageWrap);
 
   const details = createElement('div', 'product-details');
   const info = createElement('div', 'product-info');
@@ -1577,7 +1504,7 @@ async function loadMenu() {
         .select(`
           id, category_id, name_fa, description_fa,
           price_toman, discount_type, discount_value,
-          image_path, sort_order
+          sort_order
         `)
         .eq('is_available', true)
         .order('sort_order', { ascending: true })
