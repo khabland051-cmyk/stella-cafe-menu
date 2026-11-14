@@ -17,29 +17,27 @@
 :root {
   color-scheme: light;
   --bg:#edf0e8;
-  --glass:rgba(255,255,255,.55);
-  --glass-hover:rgba(255,255,255,.82);
-  --border:rgba(255,255,255,.85);
+  --glass:rgba(255,255,255,.48);
+  --glass-hover:rgba(255,255,255,.72);
+  --border:rgba(255,255,255,.75);
   --text:#344638;
   --muted:#829082;
   --accent:#738d70;
   --accent2:#a6b99b;
-  --shadow:0 8px 25px rgba(69,88,67,.055);
-  --line:rgba(115,141,112,.16);
+  --shadow:0 12px 35px rgba(69,88,67,.08);
 }
 
 body.dark {
   color-scheme:dark;
   --bg:#18221d;
   --glass:rgba(255,255,255,.055);
-  --glass-hover:rgba(255,255,255,.09);
+  --glass-hover:rgba(255,255,255,.11);
   --border:rgba(255,255,255,.12);
   --text:#edf1e9;
   --muted:#a3b0a3;
   --accent:#a9c39e;
   --accent2:#718b70;
-  --shadow:0 8px 25px rgba(0,0,0,.13);
-  --line:rgba(169,195,158,.17);
+  --shadow:0 12px 35px rgba(0,0,0,.17);
 }
 
 *{box-sizing:border-box}
@@ -55,9 +53,9 @@ body{
   font-family:'Vazirmatn',Tahoma,sans-serif;
   color:var(--text);
   background:
-    radial-gradient(ellipse at 10% 10%,rgba(172,196,155,.30),transparent 40%),
-    radial-gradient(ellipse at 90% 35%,rgba(192,207,177,.30),transparent 38%),
-    radial-gradient(ellipse at 45% 100%,rgba(180,196,166,.22),transparent 45%),
+    radial-gradient(ellipse at 10% 10%,rgba(172,196,155,.38),transparent 40%),
+    radial-gradient(ellipse at 90% 35%,rgba(192,207,177,.38),transparent 38%),
+    radial-gradient(ellipse at 45% 100%,rgba(180,196,166,.3),transparent 45%),
     var(--bg);
   background-attachment:fixed;
   transition:background .35s,color .35s;
@@ -77,12 +75,10 @@ button,input{font-family:inherit;color:inherit}
   flex-shrink:0;
 }
 
-/* هدر */
-
 .header{
   width:min(1100px,calc(100% - 32px));
   margin:22px auto 0;
-  padding:20px 25px;
+  padding:22px 25px;
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -91,7 +87,7 @@ button,input{font-family:inherit;color:inherit}
   backdrop-filter:blur(25px);
   -webkit-backdrop-filter:blur(25px);
   border:1px solid var(--border);
-  border-radius:30px;
+  border-radius:35px;
   box-shadow:var(--shadow);
 }
 
@@ -103,8 +99,8 @@ button,input{font-family:inherit;color:inherit}
 }
 
 .brand-logo{
-  width:78px;
-  height:78px;
+  width:85px;
+  height:85px;
   object-fit:contain;
   display:block;
   flex-shrink:0;
@@ -136,20 +132,21 @@ button,input{font-family:inherit;color:inherit}
   justify-content:center;
   gap:9px;
   padding:11px 16px;
-  border-radius:17px;
+  border-radius:19px;
   border:1px solid var(--border);
   background:linear-gradient(135deg,rgba(193,120,151,.13),rgba(125,113,173,.13));
   color:var(--text);
   text-decoration:none;
   font-size:12px;
   font-weight:700;
-  transition:.3s;
+  transition:transform .3s,background .3s,box-shadow .3s,border-color .3s;
 }
 
 .instagram-link:hover{
-  transform:translateY(-2px);
+  transform:translateY(-3px);
   background:linear-gradient(135deg,rgba(193,120,151,.23),rgba(125,113,173,.23));
-  box-shadow:0 8px 20px rgba(130,90,130,.10);
+  border-color:rgba(190,130,160,.55);
+  box-shadow:0 9px 22px rgba(130,90,130,.13);
 }
 
 .instagram-link svg{
@@ -161,24 +158,23 @@ button,input{font-family:inherit;color:inherit}
 .instagram-link span{white-space:nowrap}
 
 .theme-button{
-  width:47px;
-  height:47px;
+  width:49px;
+  height:49px;
   display:grid;
   place-items:center;
   border:1px solid var(--border);
   background:var(--glass);
   backdrop-filter:blur(15px);
-  border-radius:16px;
+  border-radius:19px;
   cursor:pointer;
   transition:.3s;
 }
 
 .theme-button:hover{
   background:var(--glass-hover);
-  transform:rotate(10deg);
+  transform:rotate(12deg) scale(1.08);
+  box-shadow:var(--shadow);
 }
-
-/* محتوای اصلی */
 
 .main{
   width:min(850px,calc(100% - 32px));
@@ -202,13 +198,11 @@ button,input{font-family:inherit;color:inherit}
   margin:0;
 }
 
-/* دسته‌بندی‌ها */
-
 .category-bar{
   display:flex;
   flex-wrap:wrap;
-  gap:10px;
-  margin-bottom:35px;
+  gap:12px;
+  margin-bottom:18px;
   padding:5px 0;
 }
 
@@ -217,19 +211,19 @@ button,input{font-family:inherit;color:inherit}
   align-items:center;
   justify-content:center;
   gap:9px;
-  padding:11px 19px;
+  padding:12px 19px;
   border:1px solid var(--border);
   background:var(--glass);
   backdrop-filter:blur(20px);
-  border-radius:18px;
+  border-radius:25px;
   font-size:13px;
   cursor:pointer;
-  transition:.25s;
+  transition:.3s;
   box-shadow:var(--shadow);
 }
 
 .category-button:hover{
-  transform:translateY(-2px);
+  transform:translateY(-4px);
   background:var(--glass-hover);
   border-color:var(--accent);
 }
@@ -238,7 +232,7 @@ button,input{font-family:inherit;color:inherit}
   background:var(--accent);
   color:white;
   border-color:transparent;
-  box-shadow:0 7px 18px rgba(90,120,83,.16);
+  box-shadow:0 8px 22px rgba(90,120,83,.2);
 }
 
 .category-button .icon{
@@ -246,11 +240,44 @@ button,input{font-family:inherit;color:inherit}
   height:18px;
 }
 
-/* عنوان دسته */
+/* نوار زیر دسته‌ها؛ در ابتدا مخفی است */
 
-.menu-section{
-  margin-bottom:38px;
-  scroll-margin-top:25px;
+.subcategory-bar{
+  display:none;
+  flex-wrap:wrap;
+  gap:10px;
+  margin:0 0 28px;
+  padding:12px 15px;
+  border:1px solid var(--border);
+  border-radius:22px;
+  background:var(--glass);
+  backdrop-filter:blur(20px);
+}
+
+.subcategory-bar.show{
+  display:flex;
+}
+
+.subcategory-button{
+  padding:9px 18px;
+  border:1px solid var(--border);
+  border-radius:20px;
+  background:var(--glass);
+  font-size:12px;
+  cursor:pointer;
+  transition:.25s;
+}
+
+.subcategory-button:hover{
+  border-color:var(--accent);
+  background:var(--glass-hover);
+  transform:translateY(-2px);
+}
+
+.subcategory-button.active{
+  background:var(--accent);
+  color:white;
+  border-color:transparent;
 }
 
 .section-title{
@@ -259,7 +286,7 @@ button,input{font-family:inherit;color:inherit}
   gap:12px;
   margin:38px 0 18px;
   font-size:19px;
-  font-weight:800;
+  font-weight:700;
 }
 
 .section-title::before{
@@ -270,66 +297,101 @@ button,input{font-family:inherit;color:inherit}
   border-radius:10px;
 }
 
-.section-title::after{
-  content:'';
-  height:1px;
-  flex:1;
-  background:var(--line);
-  margin-right:5px;
-}
-
-/* کارت‌های مینیمال محصولات */
-
 .products{
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:12px;
+  gap:16px;
 }
 
 .product{
   position:relative;
+  overflow:hidden;
   min-width:0;
   display:flex;
-  align-items:center;
+  flex-direction:column;
   border:1px solid var(--border);
-  border-radius:19px;
+  border-radius:29px;
   background:var(--glass);
-  backdrop-filter:blur(20px);
-  -webkit-backdrop-filter:blur(20px);
+  backdrop-filter:blur(25px);
+  -webkit-backdrop-filter:blur(25px);
   box-shadow:var(--shadow);
-  transition:background .25s,border-color .25s,transform .25s;
-  overflow:hidden;
+  transition:transform .35s,background .35s,border-color .35s,box-shadow .35s;
+}
+
+.product::before{
+  content:'';
+  position:absolute;
+  width:110px;
+  height:110px;
+  border-radius:50%;
+  background:rgba(157,181,143,.11);
+  top:-65px;
+  left:-35px;
+  transition:.4s;
+  pointer-events:none;
 }
 
 .product:hover{
+  transform:translateY(-6px);
   background:var(--glass-hover);
   border-color:var(--accent2);
-  transform:translateY(-2px);
+  box-shadow:0 18px 38px rgba(69,88,67,.13);
+}
+
+.product:hover::before{transform:scale(1.5)}
+
+.product-image-wrap{
+  position:relative;
+  width:100%;
+  height:190px;
+  overflow:hidden;
+  background:linear-gradient(135deg,rgba(166,185,155,.25),rgba(115,141,112,.12));
+}
+
+.product-image{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .5s;
+}
+
+.product:hover .product-image{transform:scale(1.05)}
+
+.product-image-placeholder{
+  width:100%;
+  height:100%;
+  display:grid;
+  place-items:center;
+  color:var(--muted);
+}
+
+.product-image-placeholder svg{
+  width:43px;
+  height:43px;
+  opacity:.65;
 }
 
 .product-details{
-  width:100%;
+  position:relative;
+  z-index:1;
   display:flex;
   justify-content:space-between;
   align-items:center;
   gap:12px;
-  padding:17px 18px;
+  padding:18px 20px 20px;
 }
 
-.product-info{
-  min-width:0;
-  flex:1;
-}
+.product-info{min-width:0}
 
 .product h3{
-  font-size:14px;
-  margin:0 0 6px;
+  font-size:15px;
+  margin:0 0 8px;
   font-weight:700;
-  line-height:1.8;
 }
 
 .product p{
-  font-size:11px;
+  font-size:12px;
   color:var(--muted);
   line-height:1.9;
   margin:0;
@@ -338,17 +400,15 @@ button,input{font-family:inherit;color:inherit}
 .product-price{
   white-space:nowrap;
   color:var(--accent);
-  font-size:12px;
-  font-weight:800;
+  font-size:13px;
+  font-weight:700;
   text-align:left;
   flex-shrink:0;
-  padding-right:10px;
-  border-right:1px solid var(--line);
 }
 
 .old-price{
   display:block;
-  font-size:10px;
+  font-size:11px;
   color:var(--muted);
   text-decoration:line-through;
   font-weight:400;
@@ -357,21 +417,15 @@ button,input{font-family:inherit;color:inherit}
 
 .discount-price{display:block}
 
-/* پیام‌ها */
-
 .status-message{
-  padding:25px;
+  padding:30px;
   text-align:center;
   color:var(--muted);
   border:1px solid var(--border);
   background:var(--glass);
-  border-radius:20px;
+  border-radius:28px;
   line-height:2;
-  font-size:13px;
-  grid-column:1/-1;
 }
-
-/* فوتر */
 
 .footer{
   width:min(850px,calc(100% - 32px));
@@ -379,7 +433,7 @@ button,input{font-family:inherit;color:inherit}
   padding:22px;
   text-align:center;
   border:1px solid var(--border);
-  border-radius:22px;
+  border-radius:28px;
   background:var(--glass);
   backdrop-filter:blur(20px);
   color:var(--muted);
@@ -388,7 +442,7 @@ button,input{font-family:inherit;color:inherit}
 
 .footer span{
   color:var(--accent);
-  font-weight:800;
+  font-weight:700;
 }
 
 /* پنجره ثبت اطلاعات مشتری */
@@ -412,7 +466,7 @@ button,input{font-family:inherit;color:inherit}
   width:min(430px,100%);
   padding:28px;
   border:1px solid var(--border);
-  border-radius:27px;
+  border-radius:30px;
   background:var(--bg);
   color:var(--text);
   box-shadow:0 25px 80px rgba(0,0,0,.22);
@@ -473,7 +527,7 @@ button,input{font-family:inherit;color:inherit}
 .popup-field input{
   width:100%;
   padding:13px 14px;
-  border-radius:13px;
+  border-radius:14px;
   border:1px solid var(--border);
   background:var(--glass);
   outline:none;
@@ -514,7 +568,7 @@ button,input{font-family:inherit;color:inherit}
   width:100%;
   padding:14px;
   border:0;
-  border-radius:14px;
+  border-radius:16px;
   background:var(--accent);
   color:white;
   font-weight:700;
@@ -546,13 +600,11 @@ button,input{font-family:inherit;color:inherit}
   margin-top:8px;
 }
 
-/* نمایش موبایل */
-
 @media(max-width:600px){
   .header{
-    padding:13px 14px;
-    border-radius:24px;
-    gap:9px;
+    padding:14px 15px;
+    border-radius:27px;
+    gap:10px;
   }
 
   .brand{gap:9px}
@@ -560,15 +612,15 @@ button,input{font-family:inherit;color:inherit}
   .brand p{font-size:10px}
 
   .brand-logo{
-    width:55px;
-    height:55px;
+    width:58px;
+    height:58px;
   }
 
   .header-actions{gap:7px}
 
   .instagram-link{
-    padding:9px;
-    border-radius:14px;
+    padding:10px;
+    border-radius:16px;
     gap:6px;
   }
 
@@ -580,30 +632,24 @@ button,input{font-family:inherit;color:inherit}
   }
 
   .instagram-link svg{
-    width:20px;
-    height:20px;
+    width:21px;
+    height:21px;
   }
 
   .theme-button{
-    width:41px;
-    height:41px;
-    border-radius:14px;
+    width:43px;
+    height:43px;
+    border-radius:15px;
   }
 
   .main{margin-top:35px}
 
   .products{
     grid-template-columns:1fr;
-    gap:10px;
+    gap:12px;
   }
 
-  .product-details{
-    padding:15px 16px;
-  }
-
-  .product h3{font-size:13px}
-  .product p{font-size:11px}
-  .product-price{font-size:11px}
+  .product-image-wrap{height:210px}
 
   .category-bar{
     flex-wrap:nowrap;
@@ -614,11 +660,17 @@ button,input{font-family:inherit;color:inherit}
 
   .category-bar::-webkit-scrollbar{display:none}
 
-  .category-button{
-    flex-shrink:0;
-    padding:10px 15px;
-    font-size:12px;
+  .category-button{flex-shrink:0}
+
+  .subcategory-bar{
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    scrollbar-width:none;
   }
+
+  .subcategory-bar::-webkit-scrollbar{display:none}
+
+  .subcategory-button{flex-shrink:0}
 
   .customer-popup{padding:23px}
 }
@@ -681,6 +733,8 @@ button,input{font-family:inherit;color:inherit}
   </section>
 
   <nav class="category-bar" id="categoryBar" aria-label="دسته‌بندی محصولات"></nav>
+
+  <nav class="subcategory-bar" id="subcategoryBar" aria-label="زیر دسته‌های محصولات"></nav>
 
   <div id="menuContent">
     <div class="status-message">در حال دریافت منوی کافه استلا...</div>
@@ -779,6 +833,8 @@ const stellaSupabase = window.supabase.createClient(
   CONFIG.SUPABASE_URL,
   CONFIG.SUPABASE_PUBLISHABLE_KEY
 );
+
+const IMAGE_BUCKET = 'product-images';
 
 /* ابزارهای عمومی */
 
@@ -1181,10 +1237,63 @@ function getDiscountedPrice(product) {
   return price;
 }
 
-/* ساخت کارت مینیمال محصول بدون تصویر */
+/* آدرس عکس */
+
+function getProductImageUrl(imagePath) {
+  if (!imagePath || typeof imagePath !== 'string') return null;
+
+  const { data, error } = stellaSupabase
+    .storage.from(IMAGE_BUCKET)
+    .getPublicUrl(imagePath);
+
+  if (error || !data || !data.publicUrl) {
+    console.error('Image URL error:', error);
+    return null;
+  }
+
+  return data.publicUrl;
+}
+
+function createImagePlaceholder() {
+  const placeholder = createElement('div', 'product-image-placeholder');
+
+  placeholder.innerHTML = `
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="3" width="18" height="18" rx="4"/>
+      <circle cx="8.5" cy="8.5" r="1.5"/>
+      <path d="m21 15-5-5L5 21"/>
+    </svg>`;
+
+  return placeholder;
+}
 
 function createProductCard(product) {
   const card = createElement('article', 'product');
+  const imageWrap = createElement('div', 'product-image-wrap');
+  const imageUrl = getProductImageUrl(product.image_path);
+
+  if (imageUrl) {
+    const image = createElement('img', 'product-image');
+
+    image.src = imageUrl;
+    image.alt = product.name_fa || 'تصویر محصول';
+    image.loading = 'lazy';
+    image.decoding = 'async';
+
+    image.addEventListener('error', () => {
+      image.remove();
+      imageWrap.appendChild(createImagePlaceholder());
+      console.error('تصویر محصول بارگذاری نشد:', product.image_path);
+    }, { once: true });
+
+    imageWrap.appendChild(image);
+
+  } else {
+    imageWrap.appendChild(createImagePlaceholder());
+  }
+
+  card.appendChild(imageWrap);
 
   const details = createElement('div', 'product-details');
   const info = createElement('div', 'product-info');
@@ -1229,13 +1338,70 @@ function createIconElement() {
   return wrapper.firstElementChild;
 }
 
-/* نمایش منو */
+/* تشخیص نام دسته برای مقایسه با parent_name */
+
+function normalizeCategoryName(value) {
+  return String(value || '').trim().toUpperCase();
+}
+
+/* نمایش محصولات یک دسته */
+
+function showCategoryProducts(category, products) {
+  const menuContent = document.getElementById('menuContent');
+
+  menuContent.replaceChildren();
+
+  const title = createElement(
+    'h2',
+    'section-title',
+    category.name_fa || category.name_en || 'محصولات'
+  );
+
+  const productGrid = createElement('div', 'products');
+
+  const categoryProducts = products.filter(
+    product => String(product.category_id) === String(category.id)
+  );
+
+  if (categoryProducts.length === 0) {
+    menuContent.appendChild(title);
+    menuContent.appendChild(
+      createElement('div', 'status-message', 'هنوز محصولی در این دسته ثبت نشده است.')
+    );
+    return;
+  }
+
+  categoryProducts.forEach(product => {
+    productGrid.appendChild(createProductCard(product));
+  });
+
+  menuContent.append(title, productGrid);
+}
+
+/* نمایش پیام انتخاب زیر دسته */
+
+function showSubcategoryMessage() {
+  const menuContent = document.getElementById('menuContent');
+
+  menuContent.replaceChildren(
+    createElement(
+      'div',
+      'status-message',
+      'لطفاً یکی از زیر دسته‌های ENERGY MOOD را انتخاب کنید.'
+    )
+  );
+}
+
+/* نمایش منو و زیر دسته‌ها */
 
 function renderMenu(categories, products) {
   const categoryBar = document.getElementById('categoryBar');
+  const subcategoryBar = document.getElementById('subcategoryBar');
   const menuContent = document.getElementById('menuContent');
 
   categoryBar.replaceChildren();
+  subcategoryBar.replaceChildren();
+  subcategoryBar.classList.remove('show');
   menuContent.replaceChildren();
 
   if (!categories || categories.length === 0) {
@@ -1245,57 +1411,152 @@ function renderMenu(categories, products) {
     return;
   }
 
-  categories.forEach((category, index) => {
-    const button = createElement('button', 'category-button');
+  /*
+    دسته‌های اصلی:
+    دسته‌هایی که parent_name خالی دارند.
+    دسته‌های 50/50 و 70R و 100A در این قسمت نمایش داده نمی‌شوند.
+  */
 
-    if (index === 0) button.classList.add('active');
+  const mainCategories = categories.filter(category => {
+    return !String(category.parent_name || '').trim();
+  });
+
+  if (mainCategories.length === 0) {
+    menuContent.appendChild(
+      createElement('div', 'status-message', 'دسته‌بندی اصلی برای نمایش وجود ندارد.')
+    );
+    return;
+  }
+
+  /*
+    پیدا کردن دسته ENERGY MOOD
+  */
+
+  const energyCategory = mainCategories.find(category => {
+    return (
+      normalizeCategoryName(category.name_en) === 'ENERGY MOOD' ||
+      normalizeCategoryName(category.name_fa) === 'ENERGY MOOD'
+    );
+  });
+
+  /*
+    پیدا کردن زیر دسته‌های ENERGY MOOD
+  */
+
+  let energySubcategories = [];
+
+  if (energyCategory) {
+    const possibleParentNames = [
+      energyCategory.name_en,
+      energyCategory.name_fa,
+      'ENERGY MOOD'
+    ]
+      .map(normalizeCategoryName)
+      .filter(Boolean);
+
+    energySubcategories = categories
+      .filter(category => {
+        const parentName = normalizeCategoryName(category.parent_name);
+        return parentName && possibleParentNames.includes(parentName);
+      })
+      .sort((a, b) => {
+        return Number(a.sort_order || 0) - Number(b.sort_order || 0);
+      });
+  }
+
+  /*
+    کلیک روی دسته اصلی
+  */
+
+  mainCategories.forEach(category => {
+    const button = createElement('button', 'category-button');
 
     button.type = 'button';
 
     button.append(
       createIconElement(),
-      createElement('span', '', category.name_fa || 'دسته‌بندی')
+      createElement('span', '', category.name_fa || category.name_en || 'دسته‌بندی')
     );
 
     button.addEventListener('click', () => {
-      const section = document.getElementById('category-' + category.id);
-
-      if (section) {
-        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-
       categoryBar.querySelectorAll('.category-button').forEach(item => {
         item.classList.remove('active');
       });
 
       button.classList.add('active');
+
+      /*
+        با انتخاب هر دسته اصلی، زیر دسته‌ها ابتدا مخفی می‌شوند.
+        فقط با انتخاب ENERGY MOOD دوباره نمایش داده خواهند شد.
+      */
+
+      subcategoryBar.replaceChildren();
+      subcategoryBar.classList.remove('show');
+
+      if (
+        energyCategory &&
+        String(category.id) === String(energyCategory.id)
+      ) {
+        if (energySubcategories.length === 0) {
+          menuContent.replaceChildren(
+            createElement(
+              'div',
+              'status-message',
+              'برای دسته ENERGY MOOD هنوز زیر دسته‌ای ثبت نشده است.'
+            )
+          );
+          return;
+        }
+
+        subcategoryBar.classList.add('show');
+
+        energySubcategories.forEach(subcategory => {
+          const subButton = createElement(
+            'button',
+            'subcategory-button',
+            subcategory.name_fa || subcategory.name_en || 'زیر دسته'
+          );
+
+          subButton.type = 'button';
+
+          subButton.addEventListener('click', () => {
+            subcategoryBar.querySelectorAll('.subcategory-button').forEach(item => {
+              item.classList.remove('active');
+            });
+
+            subButton.classList.add('active');
+
+            showCategoryProducts(subcategory, products);
+          });
+
+          subcategoryBar.appendChild(subButton);
+        });
+
+        showSubcategoryMessage();
+        return;
+      }
+
+      /*
+        اگر دسته انتخاب‌شده ENERGY MOOD نبود،
+        فقط محصولات همان دسته نمایش داده می‌شوند.
+      */
+
+      showCategoryProducts(category, products);
     });
 
     categoryBar.appendChild(button);
-
-    const section = createElement('section', 'menu-section');
-    section.id = 'category-' + category.id;
-
-    const title = createElement('h2', 'section-title', category.name_fa || 'دسته‌بندی');
-    const productGrid = createElement('div', 'products');
-
-    const categoryProducts = products.filter(
-      product => String(product.category_id) === String(category.id)
-    );
-
-    if (categoryProducts.length === 0) {
-      productGrid.appendChild(
-        createElement('div', 'status-message', 'هنوز محصولی در این دسته ثبت نشده است.')
-      );
-    } else {
-      categoryProducts.forEach(product => {
-        productGrid.appendChild(createProductCard(product));
-      });
-    }
-
-    section.append(title, productGrid);
-    menuContent.appendChild(section);
   });
+
+  /*
+    در زمان باز شدن اولیه صفحه، اولین دسته اصلی انتخاب می‌شود.
+    اگر اولین دسته ENERGY MOOD باشد، زیر دسته‌ها نمایش داده می‌شوند.
+  */
+
+  const firstCategoryButton = categoryBar.querySelector('.category-button');
+
+  if (firstCategoryButton) {
+    firstCategoryButton.click();
+  }
 }
 
 /* دریافت محصولات و دسته‌بندی‌ها */
@@ -1307,7 +1568,7 @@ async function loadMenu() {
     const [categoriesResult, productsResult] = await Promise.all([
       stellaSupabase
         .from('categories')
-        .select('id, name_fa, sort_order')
+        .select('id, name_fa, name_en, parent_name, sort_order')
         .eq('is_active', true)
         .order('sort_order', { ascending: true }),
 
@@ -1316,7 +1577,7 @@ async function loadMenu() {
         .select(`
           id, category_id, name_fa, description_fa,
           price_toman, discount_type, discount_value,
-          sort_order
+          image_path, sort_order
         `)
         .eq('is_available', true)
         .order('sort_order', { ascending: true })
